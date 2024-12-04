@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Publicación</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 flex items-center justify-center h-screen">
+    <div class="bg-white p-6 rounded-lg shadow-lg w-96 h-3/4 flex flex-col items-center gap-3">
+        <div>
+            <h2 class="text-2xl font-bold mb-4 text-center">Crear Publicación</h2>
+        </div>
+        <div class="w-full h-full">
+            <form class="h-full flex flex-col justify-between" id="postForm">
+                <textarea class="w-full h-1/2 p-2 border border-gray-300 rounded mb-4 focus:outline-none focus:border-blue-500" placeholder="Escribe tu publicación aquí..."></textarea>
+                <button type="submit" class="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-700 transition duration-200">Publicar</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('postForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const postContent = e.target.querySelector('textarea').value;
+            if (postContent) {
+                try {
+                    const response = await fetch('http://localhost:3001/create-tweet', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ status: postContent })
+                    });
+
+                    if (!response.ok) {
+                        throw new Error('Error al crear la publicación');
+                    }
+
+                    const data = await response.json();
+                    console.log('Publicación creada:', data);
+                    alert('Publicación creada exitosamente!');
+                    e.target.reset(); // Resetear el formulario
+                } catch (error) {
+                    console.error('Error:', error);
+                    alert('Hubo un problema al crear la publicación.');
+                }
+            } else {
+                alert('Por favor, escribe algo para publicar.');
+            }
+        });
+    </script>
+</body>
+</html>

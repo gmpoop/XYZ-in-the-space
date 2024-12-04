@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./styles/score/score.css">
+    <link rel="stylesheet" href="./styles/global.css">
+        
+    <style>
+        body{
+            width: 100%;
+            height: 100vh;
+        }
+        main {
+            display: flex;
+            width: 100%;
+            margin: 5em;
+        }
+        a{
+            margin-right: 2em;
+            
+        }
+    </style>
+</head>
+<body>
+
+    <div class="img-background">
+        <img class="background" src="./resources/parallax-space-backgound.png" alt="">
+        <img class="img-plannet-rings" src="./resources/parallax-space-ring-planet.png" alt="">
+        <img class="img-plannet-stars" src="./resources/parallax-space-stars.png" alt="">
+    </div>
+
+    <main class="">
+        <div>
+            <a href="#" class="menu-link" onclick="back()">
+                <img src="./resources/svg/backArrow.svg" alt="">
+            </a>
+        </div>
+           
+        <div class="score-card">
+            <h2>Mejores puntuaciones</h2>
+            <table class="score-table">
+                <thead>
+                    <tr>
+                        <th>Posición</th>
+                        <th>Jugador</th>
+                        <th>Puntos</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Jugador1</td>
+                        <td>1500</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Jugador2</td>
+                        <td>1200</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Jugador3</td>
+                        <td>1000</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Jugador4</td>
+                        <td>800</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Jugador5</td>
+                        <td>600</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>Jugador5</td>
+                        <td>600</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>Jugador5</td>
+                        <td>600</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>Jugador5</td>
+                        <td>600</td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td>Jugador5</td>
+                        <td>600</td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td>Jugador5</td>
+                        <td>600</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+      
+</body>
+<script>
+    function back() {
+
+        console.log("aplicando");
+
+        window.location.replace("dash.html")
+    }
+</script>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../styles/global.css">
+    <link rel="stylesheet" href="../styles/window/radar.css">
+    <style>
+
+    h2 {
+            letter-spacing: 3px;
+            color: white;
+        }
+
+    .background {
+        position: absolute;
+    }
+
+
+    .healtBar {
+        position: absolute;
+        top: 5%;
+        left: 0;
+        margin: 0 2em;
+        width: 300px;
+        height: 20px;
+        z-index: 10;
+        border-radius: 10px;
+        background-color: rgb(47, 255, 99);
+        border-color: black;
+    }
+
+    .score {
+        position: absolute;
+        top: 2%;
+        left: 75%;
+        margin: 0 2em;
+        width: 300px;
+        height: 20px;
+        z-index: 10;
+    }
+
+
+    .map {
+        position: absolute;
+        top: 60%;
+        left: 75%;
+        margin: 0 2em;
+        width: 200px;
+        height: 200px;
+        z-index: 10;
+        border-radius: 50%;
+        border-color: 2px solid white;
+        background-color: #043d04;
+    }
+
+    .menu-svg {
+        position: absolute;
+        left: 0;
+        top: 80%;
+        margin: 0 2em;
+        z-index: 10;
+    }
+
+    .pause-menu {
+        display: none;
+        position: absolute;
+        z-index: 10;
+        width: 50%;
+            text-align: center;
+            padding: 40px;
+            border-radius: 15px;
+            background-color: #2a2a39; /* Fondo del menú es un tono más oscuro */
+            box-shadow: 0 0 15px #703950; /* Sombra rosa puntuaciones */
+            opacity: 80%;
+        ;
+    }
+
+    </style>
+</head>
+<body>
+
+    <div class="img-background"></div>
+        <img class="background" src="../resources/parallax-space-backgound.png" alt="">
+        <img class="img-plannet-rings" src="../resources/parallax-space-big-planet.png" alt="">
+        <img class="img-plannet-stars" src="../resources/parallax-space-stars.png" alt="">
+        <img class="img-plannet-far" src="../resources/parallax-space-far-planets.png" alt="">
+    </div>
+
+        <div class="healtBar">
+
+        </div>
+
+        <div class="score">
+            <h2>0000000</h2>
+        </div>
+
+        <ul class="radar">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+
+        <div>
+            <a href="#" class="menu-link menu-svg" onclick="menu('pause')">
+                <img src="../resources/svg/menu.svg" alt="">
+            </a>
+        </div>
+
+        <div class="pause-menu" id="pause_menu">
+            <h1 class="menu-title">Pausa</h1>
+            <div class="menu-item">
+                <a href="#" class="menu-link" onclick="menu('resume')">Reaundar </a>
+            </div>
+            <div class="menu-item">
+                <a href="#" class="menu-link">Reiniciar</a>
+            </div>
+            <div class="menu-item">
+                <a href="#" class="menu-link">Guardar partida</a>
+            </div>
+            <div class="menu-item">
+                <a href="#" class="menu-link" onclick="menu('off')"">Salir</a>
+            </div>
+        </div>
+
+  
+</body>
+
+<script>
+
+    const pause_menu = document.getElementById("pause_menu");
+
+    function menu (option) {
+
+        if(option === "resume") {
+            pause_menu.style.display = 'none'; // Muestra el menú
+        }
+        if (option === "pause"){
+            pause_menu.style.display = 'block'; // Muestra el menú
+
+        }
+        if(option === "off"){
+            window.location.replace("../dash.html")
+        }
+    }
+
+</script>
+</html>

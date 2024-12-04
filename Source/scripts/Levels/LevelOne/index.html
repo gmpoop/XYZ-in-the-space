@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="/socket.io/socket.io.js"></script>
+  <script type="importmap">
+        {
+          "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@0.150.1/build/three.module.js",
+            "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.150.1/examples/jsm/"
+          }
+        }
+      </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <title>XYZ in the space</title>
+
+</head>
+<style>
+  /* Importación de fuente retro estilo arcade */
+  @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    width: 100%;
+    font-family: 'Press Start 2P', cursive;
+    /* Fuente retro estilo arcade */
+    height: 100%;
+    background-color: black;
+  }
+
+  a:hover {
+    color: #fedffe; /* Rosa fuerte al pasar el ratón */
+    text-shadow: 0 0 5px #703950;
+  }
+
+  canvas {
+    display: block;
+  }
+
+  .loading-screen {
+    background-color: #1a1a1a;
+    color: #ffffff;
+    padding: 100px 250px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    animation: fadeIn 1s ease-in-out;
+  }
+
+
+  .menu-item {
+    margin: 15px 0;
+  }
+
+  .menu-link {
+    text-decoration: none;
+    color: white;
+    /* Azul asteroide para los enlaces */
+    font-size: 1.5rem;
+    padding: 10px 20px;
+    border: 2px solid #b24953;
+    /* Borde de los enlaces */
+    border-radius: 10px;
+    transition: all 0.3s ease;
+  }
+
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+</style>
+
+<body class="w-screen opacity-40">
+
+  <div class="">
+
+    <div class="w-full fixed flex justify-between top-0 left-0">
+      <div id="health-bar" class=" w-1/4 h-10 bg-green-500 rounded-full  m-5"></div>
+
+      <div class="m-5">
+        <h1 class="text-white text-2xl">Timer <span id="score">0:00</span></h1>
+      </div>
+
+      <div class="m-5">
+        <h1 class="text-white text-2xl">Puntuación: <span id="score">000000</span></h1>
+      </div>
+
+    </div>
+
+    <div class="menu-item fixed top-1/4 left-1/3 z-10 text-white  w-[500px] h-[400px]">
+      <div class="flex flex-col gap-3 h-full items-center justify-center">
+        <p class="text-2xl">¡Perdiste!</P>
+        <a class="menu-link" href="">Ir al menu</a>
+        <a class="menu-link" href="">Crear publicación</a>
+      </div>
+    </div>
+
+    <div class="menu-item fixed top-1/4 left-1/3 z-10 text-white  w-[500px] h-[400px]">
+      <div class="flex flex-col gap-3 h-full items-center justify-center">
+        <p class="text-2xl">¡Perdiste!</P>
+        <a class="menu-link" href="">Ir al menu</a>
+        <a class="menu-link" href="">Crear publicación</a>
+      </div>
+    </div>
+
+    <div id="screen" class="fixed inset-0 bg-black  bg-opacity-80 text-white flex justify-center items-center z-50">
+
+      <div class="loading-screen">
+        <h1>Cargando...</h1>
+      </div>
+    </div>
+  </div>
+  </div>
+
+
+</body>
+<script type="module" src="../../../start/index.js"></script>
+
+</html>

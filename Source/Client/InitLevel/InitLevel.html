@@ -1,0 +1,169 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../styles/global.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+
+
+</head>
+<body class="w-screen h-screen">
+    <div class="w-full h-10 bg-gray-200 rounded-full"></div>
+        <div id="health-bar" class="h-full bg-green-500 rounded-full" style="width: 100%;"></div>
+    </div>
+    <div class=" flex flex-col m-5">
+        <div class="flex w-full justify-between my-10">
+            <div class="flex-col" id="">
+                <div class="menu-container">
+                    <h1 class="menu-title">Seleciona tipo de juego</h1>
+                    <div id="" class="menu-item">
+                        <a  href="#" class="menu-link flex items-center " > <input value="indiv" class="cb_type " type="checkbox"> Individual</a>
+                    </div>
+                    <div id=""  class="menu-item">
+                        <a href="#"  class="menu-link flex items-center p-4" >  <input
+                            value="multi"  class="cb_type   " id="" type="checkbox" placeholder="Multijugador"> 
+                            Multijuador
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex-col" id="">
+                <div class="menu-container">
+                    <h1 class="menu-title">Seleciona modo de juego</h1>
+                    <div id="" class="menu-item">
+                        <a  href="#" class="menu-link flex items-center " >  <input value="freefall" class="cb_mode   " type="checkbox"> Todos contra todos</a>
+                    </div>
+                    <div id=""  class="menu-item">
+                        <a href="#"  class="menu-link flex items-center p-4" >  <input value="survive" class="cb_mode   " id="" type="checkbox" >
+                        Sobrevivir</a>
+                    </div>
+                </div>
+            </div>
+    
+        </div>
+    
+        <div class="w-screen flex justify-between" id="">
+            <div class="">
+                <h1 class="menu-title">Seleciona nivel</h1>
+                <div class="flex gap-2">
+                    <div id="" class="menu-item ">
+                        <a  href="#" class="menu-link flex items-center p-4" >  <input value="level_one" class="cb_level    " type="checkbox"> Nivel 1</a>
+                    </div>
+                    <div id=""  class="menu-item">
+                        <a href="#"  class="menu-link flex items-center p-4" >  <input value="level_two" class="cb_level   " id="" type="checkbox" >
+                        Nivel 2</a>
+                    </div>
+                    <div id=""  class="menu-item">
+                        <a href="#"  class="menu-link flex items-center p-4" >  <input value="level_three" class="cb_level   " id="" type="checkbox">
+                        Nivel 3</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="h-full content-center">
+                <div class="">
+                    <div id=""  class="menu-item">
+                        <a href="#"  class="menu-link flex items-center p-4"  onclick="StartGame()">  
+                        Empezar</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+       
+        
+    </div>
+
+
+    <script>
+
+        const request = async (body) =>{
+            return fetch('http://localhost:3000/configurations', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*',
+                    'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS'
+                
+                },
+                body: JSON.stringify(body)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if(data.status === 200){
+                    console.log('Solicitud exitosa');
+                    return true;
+                }   
+
+                return false;
+            })
+
+        }
+
+
+        const  StartGame = async () => {
+            let type = '';
+            let mode = '';
+            let level = '';
+
+            document.querySelectorAll('.cb_type').forEach((cb) => {
+                if (cb.checked) {
+                    console.log(cb.value);
+                    type = cb.value;
+                }
+            });
+            document.querySelectorAll('.cb_mode').forEach((cb) => {
+                if (cb.checked) {
+                    console.log(cb.value);
+                    mode = cb.value;
+                }
+            });
+            document.querySelectorAll('.cb_level').forEach((cb) => {
+                if (cb.checked) {
+                    console.log(cb.value);
+                    level = cb.value;
+                }
+            });
+
+            if (type === '' || mode === '' || level === '') {
+                alert('Selecciona todos los campos');
+                return;
+            }
+
+            const response = await request({"type": type, 
+                "mode": mode, 
+                "level": level});
+
+            console.log('response', response);
+            if(!response){
+                alert('Error al iniciar el juego');
+                return;
+            }
+           
+            url = `http://localhost:3000/${level}`;
+
+            console.log(url);
+            window.location.replace(url);
+
+
+        }
+
+        function UpdateURL(parameter, option) {
+
+            // Agrega el parámetro a la URL
+            const url = new URL(window.location);
+            url.searchParams.set(parameter, option);
+            window.history.pushState({}, '', url);
+
+            // Maneja el parámetro para realizar una acción
+        }
+
+    </script>
+</body>
+</html>

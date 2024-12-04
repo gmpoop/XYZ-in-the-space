@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./styles/score/score.css">
+    <link rel="stylesheet" href="./styles/conf/conf.css">
+    <link rel="stylesheet" href="./styles/global.css">
+        
+    <style>
+        body{
+            width: 100%;
+            height: 100vh;
+        }
+        main {
+            display: flex;
+            width: 100%;
+            margin: 5em;
+        }
+        a{
+            margin-right: 2em;
+            
+        }
+        h3 {
+            color: white;
+            display: flex;
+            width: 100%;
+        }
+
+        input {
+            width: 40%;
+            background-color: red;
+            cursor: pointer;
+
+        }
+
+        .item-container{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 2em;        
+        }
+
+        .container-difficulty {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .item-difficulty:hover {
+            opacity: 70%;
+            cursor: pointer;
+            outline-offset: 4px;
+        }
+
+        .item-difficulty:focus {
+            opacity: 70%;
+            cursor: pointer;
+        }
+
+        .progress-container{
+            display: flex;
+            align-items: center;
+            justify-content: end;
+            gap: 2em;
+            width: 100%;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="img-background">
+        <img class="background" src="./resources/parallax-space-backgound.png" alt="">
+        <img class="img-plannet-rings" src="./resources/parallax-space-ring-planet.png" alt="">
+        <img class="img-plannet-stars" src="./resources/parallax-space-stars.png" alt="">
+    </div>
+
+    <main class="">
+        <div>
+            <a href="#" class="menu-link" onclick="back()">
+                <img src="./resources/svg/backArrow.svg" alt="">
+            </a>
+        </div>
+           
+        <div class="score-card">
+            <h2>Configuración</h2>
+            <div class="">
+                <div class="item-container">
+                    <h3 class="">Volumen</h3>
+                    <div class="progress-container">
+                        <input  type="range" min="0" max="100" id="progressBar">
+                        <span id="progressValue">50%</span>
+                    </div>
+                </div>
+                <div class="item-container">
+                    <h3>Dificultad</h3>
+                    <div class="container-difficulty">
+                        <p class="item-difficulty">Facil</p>
+                        <p class="item-difficulty">Medio</p>
+                        <p class="item-difficulty">Dificil</p>
+                    </div>
+                </div>
+                <div class="item-container">
+                    <h3 class="">Brillo</h3>
+                    <div class="progress-container">
+                        <input  type="range" min="0" max="100" id="progressBar">
+                        <span id="progressValue">50%</span>
+                    </div>
+                </div>
+            </div>
+   
+        </div>
+    </main>
+      
+</body>
+<script>
+
+    const progressBar = document.getElementById("progressBar"); 
+
+    progressBar.addEventListener('input', function () {
+        progressValue.textContent = `${this.value}%`; // Actualizar el texto con el valor seleccionado
+    });
+
+    function back() {
+
+        console.log("aplicando");
+
+        window.location.replace("dash.html")
+    }
+</script>
+</html>

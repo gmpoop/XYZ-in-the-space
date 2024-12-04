@@ -1,0 +1,10 @@
+
+.header-conf {
+    flex-direction: column;
+}
+
+.conf-item {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+}

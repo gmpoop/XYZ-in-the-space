@@ -1,0 +1,198 @@
+/* Importación de fuente retro estilo arcade */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+/* Configuración global */
+body {
+    background-color: #1e1e2f; /* Fondo azul oscuro */
+    color: #fedffe; /* Texto principal es rosa fuerte */
+    font-family: 'Press Start 2P', cursive; /* Fuente retro estilo arcade */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden; /* Evita el scroll innecesario */
+}
+
+/* Estilos generales de texto */
+h1, h2, h3, h4, h5, h6 {
+    color: #b24953; /* Títulos es rosa fuerte */
+    text-shadow: 0 0 10px black; /* Sombra rosa puntuaciones */
+    text-align: center;
+    margin: 20px 0;
+}
+
+p {
+    color: #fedffe; /* Texto es rosa fuerte */
+    text-align: center;
+    margin: 10px 20px;
+    line-height: 1.6;
+}
+
+/* Botones */
+button {
+    background-color: #7aa4c3; /* Fondo azul asteroide */
+    color: #1e1e2f; /* Texto es azul oscuro */
+    border: 2px solid #703950; /* Borde rosa puntuaciones */
+    border-radius: 10px;
+    padding: 15px 30px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    display: inline-block;
+    margin: 10px;
+    text-shadow: 0 0 5px #703950;
+}
+
+button:hover {
+    background-color: #fedffe; /* Fondo rosa fuerte al pasar el ratón */
+    color: #1e1e2f; /* Texto cambia a azul oscuro */
+    box-shadow: 0 0 15px #703950; /* Efecto de sombra rosa puntuaciones */
+}
+
+/* Enlaces */
+a {
+    text-decoration: none;
+    color: white; /* Azul asteroide para los enlaces */
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #fedffe; /* Rosa fuerte al pasar el ratón */
+    text-shadow: 0 0 5px #703950;
+}
+
+/* Contenedores */
+.container {
+    text-align: center;
+    border: 2px solid #7aa4c3; /* Borde es azul asteroide */
+    padding: 40px;
+    border-radius: 15px;
+    background-color: #2a2a40; /* Fondo del contenedor es un tono más oscuro */
+    box-shadow: 0 0 15px #703950; /* Sombra rosa puntuaciones */
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+/* Menú del juego */
+.menu-container {
+    width: 100%;
+    text-align: center;
+}
+
+.menu-item {
+    margin: 15px 0;
+}
+
+.menu-link {
+    text-decoration: none;
+    color: white; /* Azul asteroide para los enlaces */
+    font-size: 1.5rem;
+    padding: 10px 20px;
+    border: 2px solid #b24953; /* Borde de los enlaces */
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+
+.menu-link-type:focus,
+.menu-link-mode:focus,
+.menu-link-level:focus {
+    background-color: #4f2b37; /* Fondo rosa fuerte al pasar el ratón */
+    color: white; /* Cambia el texto a azul oscuro */
+    box-shadow: 0 0 15px #703950;  
+}
+
+
+.menu-link-special:hover {
+    background-color: #ffd700; /* Fondo amarillo más claro al pasar el ratón */
+    color: #1e1e2f; /* Texto azul oscuro */
+    box-shadow: 0 0 15px #ffcc00; /* Efecto de sombra amarilla */
+}
+
+/* Input y formularios */
+input, textarea {
+    background-color: #2a2a40; /* Fondo del input */
+    color: #fedffe; /* Texto del input */
+    border: 2px solid #7aa4c3; /* Borde azul asteroide */
+    padding: 10px;
+    margin: 10px 0;
+    width: calc(100% - 30px);
+    border-radius: 10px;
+    outline: none;
+    font-size: 1rem;
+    
+}
+
+/* Fondo */
+.img-background {
+    position: absolute;
+    width: 100%;
+    z-index: -5;
+}
+
+.background {
+    width: 100%;
+    height: 100vh;
+}
+
+.img-plannet-red {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 5;
+    width: 20%;
+}
+
+.img-plannet-rings {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    z-index: 5;
+    width: 20%;
+    transform: rotate(115deg);
+}
+
+.img-plannet-far {
+    position: absolute;
+    top: 20%;
+    left: 30%;
+    z-index: 5;
+    width: 50%;
+}
+
+.img-plannet-stars {
+    position: absolute;
+    width: 50%;
+    top: 20%;
+    left: 50%;
+    z-index: 10;
+}
+
+/* Componentes mas utilzados */ 
+.basic-container {
+    display: flex; 
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    margin: 3em;
+}
+
+.section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: opacity 1.0s ease, max-height 1.0s ease;
+}
+
+.section.active {
+    opacity: 1;
+    max-height: 1000px; /* Ajusta según el contenido */
+}
